@@ -69,4 +69,4 @@ git clone -b 7.x-3.x https://github.com/omega8cc/hosting_custom_settings.git hos
 wget https://ftp.drupal.org/files/projects/drupal-7.98.tar.gz
 tar xvf drupal-7.98.tar.gz
 
-git clone -b https://github.com/omega8cc/hostmaster.git
+git clone https://github.com/omega8cc/hostmaster.git
