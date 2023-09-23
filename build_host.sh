@@ -65,3 +65,8 @@ tar xvf userprotect-7.x-1.3.tar.gz
 # BOA Custom Contrib
 
 git clone -b 7.x-3.x https://github.com/omega8cc/hosting_custom_settings.git hosting_custom_settings
+
+wget https://ftp.drupal.org/files/projects/drupal-7.98.tar.gz
+tar xvf drupal-7.98.tar.gz
+
+git clone -b https://github.com/omega8cc/hostmaster.git
