@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git clone -b 5.x-head https://github.com/omega8cc/eldir.git eldir
-git clone -b 5.x-head https://github.com/omega8cc/hosting.git hosting
+git clone -b 5.x-head git@github.com:AdvisorNet/hosting.git hosting
 git clone -b 5.x-head https://github.com/omega8cc/aegir_objects.git aegir_objects
 git clone -b 5.x-head https://github.com/omega8cc/hosting_civicrm.git hosting_civicrm
 git clone -b 5.x-head https://github.com/omega8cc/hosting_deploy.git hosting_deploy
