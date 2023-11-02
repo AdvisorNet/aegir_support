@@ -98,5 +98,5 @@ tar xvf userprotect-7.x-1.3.tar.gz
 
 wget https://ftp.drupal.org/files/projects/drupal-7.98.tar.gz
 tar xvf drupal-7.98.tar.gz
-mv drupal-7.98.tar.gz drupal
+mv drupal-7.98 drupal
 
