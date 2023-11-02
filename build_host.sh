@@ -1,15 +1,47 @@
 #!/bin/bash
+urlDev="http://${_USE_MIR}/dev"
+urlHmr="http://${_USE_MIR}/versions/head/boa/aegir"
 
-git clone -b 5.x-head https://github.com/omega8cc/eldir.git eldir
-git clone -b 5.x-head git@github.com:AdvisorNet/hosting.git hosting
-git clone -b 5.x-head https://github.com/omega8cc/aegir_objects.git aegir_objects
-git clone -b 5.x-head https://github.com/omega8cc/hosting_civicrm.git hosting_civicrm
-git clone -b 7.x-3.x git@github.com:AdvisorNet/hosting_deploy.git hosting_deploy
-git clone -b 5.x-head https://github.com/omega8cc/hosting_git.git hosting_git
-git clone -b 5.x-head https://github.com/omega8cc/hosting_le.git hosting_le
-git clone -b 5.x-head https://github.com/omega8cc/hosting_remote_import.git hosting_remote_import
-git clone -b 5.x-head https://github.com/omega8cc/hosting_site_backup_manager.git hosting_site_backup_manager
-git clone -b 5.x-head https://github.com/omega8cc/hosting_tasks_extra.git hosting_tasks_extra
+crlGet="-L --max-redirs 10 -k -s --retry 10 --retry-delay 5 -A iCab"
+gCb="git clone --branch"
+gitHub="https://github.com/omega8cc"
+gitLab="https://gitlab.com/omega8cc"
+_USE_MIR="files.aegir.cc"
+_ROOT = "/var/aegir"
+rootDrush="${_ROOT}/.drush"
+makeLocal="/opt/tmp/make_local"
+# Get Drush
+cd /var/aegir; ${gCb} 8-boa-micro ${gitHub}/drush.git
+# Provision
+cd ${rootDrush}; ${gCb} 5.x-head ${gitHub}/provision.git
+# Dependencies
+cd ${makeLocal}
+# Eldir
+${gCb} 5.x-head ${gitHub}/eldir.git
+# Hosting
+${gCb} 5.x-head ${gitHub}/hosting.git
+#git clone -b 5.x-head git@github.com:AdvisorNet/hosting.git hosting
+# Aegir Objects
+${gCb} 5.x-head ${gitHub}/aegir_objects.git
+# Hosting Civicrm
+${gCb} 5.x-head ${gitHub}/hosting_civicrm.git
+# Hosting Deploy - git@github.com:AdvisorNet/hosting_deploy.git
+${gCb} 5.x-head ${gitHub}/hosting_deploy.git
+# Hosting Git
+${gCb} 5.x-head ${gitHub}/hosting_git.git
+# Hosting LE
+${gCb} 5.x-head ${gitHub}/hosting_le.git
+# Hosting Remote Import
+${gCb} 5.x-head ${gitHub}/hosting_remote_import.git
+# Hosting Site Backup Manager
+${gCb} 5.x-head ${gitHub}/hosting_site_backup_manager.git
+# Hosting Task Extra
+${gCb} 5.x-head ${gitHub}/hosting_tasks_extra.git
+# Security Review
+${gCb} 7.x-1.x ${gitHub}/security_review.git
+# Hosting Custom Settings
+${gCb} 5.x-head ${gitHub}/hosting_custom_settings.git
+
 wget https://ftp.drupal.org/files/projects/admin_menu-7.x-3.0-rc6.tar.gz
 tar xvf admin_menu-7.x-3.0-rc6.tar.gz
 wget https://ftp.drupal.org/files/projects/betterlogin-7.x-1.5.tar.gz
@@ -64,9 +96,7 @@ tar xvf userprotect-7.x-1.3.tar.gz
 
 # BOA Custom Contrib
 
-git clone -b 5.x-head https://github.com/omega8cc/hosting_custom_settings.git hosting_custom_settings
-
 wget https://ftp.drupal.org/files/projects/drupal-7.98.tar.gz
 tar xvf drupal-7.98.tar.gz
+mv drupal-7.98.tar.gz drupal
 
-git clone -b 5.x-head https://github.com/omega8cc/hostmaster.git
