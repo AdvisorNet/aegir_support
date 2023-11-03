@@ -7,26 +7,28 @@ gCb="git clone --branch"
 gitHub="https://github.com/omega8cc"
 gitLab="https://gitlab.com/omega8cc"
 _USE_MIR="files.aegir.cc"
-_ROOT = "/var/aegir"
+_ROOT="/var/aegir"
 rootDrush="${_ROOT}/.drush"
-if [ ! -d "${rootDrush}" ];
+if [ ! -d "${rootDrush}" ]; then
   mkdir -p ${rootDrush}
 fi
 makeLocal="/opt/tmp/make_local"
-if [ ! -d "${makeLocal}" ];
+if [ ! -d "${makeLocal}" ]; then
   mkdir -p ${makeLocal}
 fi
 # Get Drush
 
-if [ ! -d "${_ROOT}" ];
+if [ ! -d "${_ROOT}" ]; then
   cd ${_ROOT}; ${gCb} 8-boa-micro ${gitHub}/drush.git
 fi
 # Provision
 cd ${rootDrush}; ${gCb} 5.x-head ${gitHub}/provision.git
-# Dependencies
+# Dependenciesx
 cd ${makeLocal}
 # Eldir
 ${gCb} 5.x-head ${gitHub}/eldir.git
+# Hostmaster
+${gCb} 5.x-head ${gitHub}/hostmaster.git
 # Hosting
 ${gCb} 5.x-head ${gitHub}/hosting.git
 #git clone -b 5.x-head git@github.com:AdvisorNet/hosting.git hosting
