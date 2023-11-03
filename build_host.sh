@@ -9,9 +9,18 @@ gitLab="https://gitlab.com/omega8cc"
 _USE_MIR="files.aegir.cc"
 _ROOT = "/var/aegir"
 rootDrush="${_ROOT}/.drush"
+if [ ! -d "${rootDrush}" ];
+  mkdir -p ${rootDrush}
+fi
 makeLocal="/opt/tmp/make_local"
+if [ ! -d "${makeLocal}" ];
+  mkdir -p ${makeLocal}
+fi
 # Get Drush
-cd /var/aegir; ${gCb} 8-boa-micro ${gitHub}/drush.git
+
+if [ ! -d "${_ROOT}" ];
+  cd ${_ROOT}; ${gCb} 8-boa-micro ${gitHub}/drush.git
+fi
 # Provision
 cd ${rootDrush}; ${gCb} 5.x-head ${gitHub}/provision.git
 # Dependencies
@@ -100,3 +109,4 @@ wget https://ftp.drupal.org/files/projects/drupal-7.98.tar.gz
 tar xvf drupal-7.98.tar.gz
 mv drupal-7.98 drupal
 
+rm -rf *.tar.gz
